@@ -13,6 +13,7 @@
           :key="i"
           value="true"
         >
+          <v-btn>test</v-btn>
           <v-list-tile-action>
             <v-icon light v-html="item.icon"></v-icon>
           </v-list-tile-action>
