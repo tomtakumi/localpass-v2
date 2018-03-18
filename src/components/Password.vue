@@ -20,7 +20,7 @@
           <v-list-tile-sub-title>User name</v-list-tile-sub-title>
         </v-list-tile-content>
         <v-list-tile-action @click.stop>
-          <v-btn icon @click="hover()">
+          <v-btn icon @click="edit()">
             <v-icon color="orange lighten-2" small>edit</v-icon>
           </v-btn>
         </v-list-tile-action>
@@ -36,11 +36,11 @@
           </v-list-tile-title>
           <v-list-tile-sub-title>Password</v-list-tile-sub-title>
         </v-list-tile-content>
-        <v-list-tile-action @click.stop>
+        <!--<v-list-tile-action @click.stop>
           <v-btn icon @click="hover()">
             <v-icon color="orange lighten-2" small>edit</v-icon>
           </v-btn>
-        </v-list-tile-action>
+        </v-list-tile-action>-->
       </v-list-tile> 
 
     </v-list-group>  
@@ -79,10 +79,6 @@ export default {
       msgUserCopied: "User name copied.",
       msgPassCopied: "Password copied.",
       snackbarText: "",
-      e1: false,
-      e2: false,
-      e3: false,
-      e4: false,
       pwd: 'Password'
     };
   },
@@ -90,8 +86,8 @@ export default {
     
   },
   methods: {
-    hover() {
-      console.log("Edit clicked.");
+    edit() {
+      this.$router.push({ path: '/form' })
     }, //delete later
     copyPass(value) {
       this.$clipboard(value);
