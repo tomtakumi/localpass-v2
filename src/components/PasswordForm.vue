@@ -32,6 +32,7 @@ export default {
     },
     save() {
       this.$store.commit('savePassword', this.password)
+      this.password = {}
     }
   }
 };

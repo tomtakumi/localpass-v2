@@ -14,7 +14,7 @@
             <router-view></router-view>
           </main>
           <v-btn fab fixed color="orange" bottom right @click="add">
-            <v-icon>add</v-icon>
+            <v-icon>{{ fabIcon }}</v-icon>
           </v-btn>
         </v-card>
       </v-flex>    
@@ -30,11 +30,21 @@ export default {
     PasswordList
   },
   data() {
-    return {};
+    return {
+      fabIcon: "add",
+    };
   },
   methods: {
     add() {
-      this.$router.push({ path: '/form' })
+    
+      if (this.fabIcon === "add") {
+        this.fabIcon = "keyboard_backspace"
+        this.$router.push({ path: '/form' })
+      } else {
+        this.fabIcon = "add"
+        this.$router.push({ path: '/' })
+      }
+
     }
   },
   name: 'App'
