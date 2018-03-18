@@ -1,29 +1,45 @@
 require('../node_modules/vuetify/src/stylus/app.styl')
 
 import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Vuex from 'vuex'
 import {
   Vuetify,
   VApp,
-  VNavigationDrawer,
+  VAvatar,
+  VCard,
   VFooter,
   VList,
+  VMenu,
   VBtn,
   VIcon,
   VGrid,
+  VSnackbar,
+  VSubheader,
+  VTextField,
   VToolbar,
   transitions
 } from 'vuetify'
+
+import { routes } from './routes'
+import { storeDef } from './store'
 import App from './App.vue'
+import Clipboard from 'v-clipboard'
 
 Vue.use(Vuetify, {
   components: {
     VApp,
-    VNavigationDrawer,
+    VAvatar,
+    VCard,
     VFooter,
     VList,
+    VMenu,
     VBtn,
     VIcon,
     VGrid,
+    VSnackbar,
+    VSubheader,
+    VTextField, 
     VToolbar,
     transitions
   },
@@ -38,7 +54,21 @@ Vue.use(Vuetify, {
   }
 })
 
+Vue.use(VueRouter)
+Vue.use(Vuex)
+Vue.use(Clipboard)
+
+const router = new VueRouter({
+  routes,
+  mode: 'history'
+})
+
+const store = new Vuex.Store( storeDef )
+
 new Vue({
   el: '#app',
-  render: h => h(App)
+  store,
+  router,
+  components: { App },
+  template: '<App/>'
 })
