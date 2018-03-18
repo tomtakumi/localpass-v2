@@ -36,11 +36,6 @@
           </v-list-tile-title>
           <v-list-tile-sub-title>Password</v-list-tile-sub-title>
         </v-list-tile-content>
-        <!--<v-list-tile-action @click.stop>
-          <v-btn icon @click="hover()">
-            <v-icon color="orange lighten-2" small>edit</v-icon>
-          </v-btn>
-        </v-list-tile-action>-->
       </v-list-tile> 
 
     </v-list-group>  
