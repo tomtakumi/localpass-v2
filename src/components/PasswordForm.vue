@@ -16,6 +16,11 @@
 
 <script>
 export default {
+  props: {
+    pass: {
+      type: Object
+    }
+  },
   data() {
     return {
       password: {
