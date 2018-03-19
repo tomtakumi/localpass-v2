@@ -6,14 +6,14 @@ import PasswordForm from './components/PasswordForm'
 Vue.use(Router)
 
 export const routes = [
-    {
-        path: '/',
-        name: 'PasswordList',
-        component: PasswordList
-    },
-    {
-        path: '/form',
-        name: 'PasswordForm',
-        component: PasswordForm
-    }
+  {
+    path: '/',
+    name: 'PasswordList',
+    component: PasswordList
+  },
+  {
+    path: '/form',
+    name: 'PasswordForm',
+    component: PasswordForm
+  }
 ]

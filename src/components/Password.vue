@@ -2,7 +2,12 @@
   <div>  
     <v-subheader class="orange--text">{{ password.group }}</v-subheader>
 
-    <v-list-group v-for="item in password.passwords" :key="item._id">
+    <v-list-group 
+      v-for="item in password.passwords" 
+      v-model="item.model" 
+      :key="item._id"      
+      :prepend-icon="item.model ? iconup : icondown"
+      append-icon="" >
       
       <v-list-tile slot="activator" class="px-0">                       
         <v-list-tile-content>
@@ -13,22 +18,22 @@
 
       <v-list-tile :ripple="{ class: 'orange--text' }" avatar @click="copyUser(item.user_name)">
         <v-list-tile-avatar>
-          <v-icon color="orange lighten-2">lock_outline</v-icon>
+          <!--<v-icon color="orange lighten-2">lock_outline</v-icon>-->
         </v-list-tile-avatar>
         <v-list-tile-content>
           <v-list-tile-title class="orange--text text--lighten-2">{{ item.user_name }}</v-list-tile-title>
           <v-list-tile-sub-title>User name</v-list-tile-sub-title>
         </v-list-tile-content>
-        <v-list-tile-action @click.stop>
+        <!--<v-list-tile-action @click.stop>
           <v-btn icon @click="edit()">
             <v-icon color="orange lighten-2" small>edit</v-icon>
           </v-btn>
-        </v-list-tile-action>
+        </v-list-tile-action>-->
       </v-list-tile>
 
       <v-list-tile :ripple="{ class: 'orange--text' }" avatar @click="copyPass(item.pass)">
         <v-list-tile-avatar>
-          <v-icon color="orange lighten-2">lock_open</v-icon>
+          <!--<v-icon color="orange lighten-2">lock_open</v-icon>-->
         </v-list-tile-avatar>
         <v-list-tile-content>
           <v-list-tile-title class="orange--text text--lighten-2">
@@ -54,7 +59,7 @@ export default {
       type: Object,
       default() {
         return {
-          group: "<Group>",
+          group: "<Group>",          
           passwords: [
             {
               _id: 0,
@@ -69,12 +74,13 @@ export default {
   },
   data() {
     return {
+      icondown: "keyboard_arrow_down",
+      iconup: "keyboard_arrow_up",
       timeout: 1000,
       snackbar: false,
       msgUserCopied: "User name copied.",
       msgPassCopied: "Password copied.",
-      snackbarText: "",
-      pwd: 'Password'
+      snackbarText: ""
     };
   },
   computed: {
@@ -83,7 +89,7 @@ export default {
   methods: {
     edit() {
       this.$router.push({ path: '/form' })
-    }, //delete later
+    },
     copyPass(value) {
       this.$clipboard(value);
       this.snackbarText = this.msgPassCopied;
