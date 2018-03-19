@@ -7,8 +7,9 @@
       v-model="item.model" 
       :key="item._id"      
       :prepend-icon="item.model ? iconup : icondown"
-      append-icon="" >
-      
+      append-icon=""
+      >
+
       <v-list-tile slot="activator" class="px-0">                       
         <v-list-tile-content>
           <v-list-tile-title class="orange--text text--lighten-1">{{ item.system }}</v-list-tile-title>
