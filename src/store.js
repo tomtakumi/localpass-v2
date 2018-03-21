@@ -31,14 +31,6 @@ export const storeDef = {
           { _id: 0, model: false, system: "DBC", user_name: "User1", pass: "1091asdfaks" },
           { _id: 1, model: false, system: "DBD", user_name: "User2", pass: "1091asdfaks" }
         ]
-      },
-      {
-        group: "P",
-        model: false,
-        passwords: [
-          { _id: 0, model: false, system: "P1D 010", user_name: "User1", pass: "1091asdfaks" },
-          { _id: 1, model: false, system: "P1D 050", user_name: "User2", pass: "1091asdfaks" }
-        ]
       }
     ]
   },
