@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <v-list two-line subheader dense app>    
+    <v-list subheader dense>    
       <password v-for="password in allPasswords" :key="password.group" :password="password"></password>
     </v-list>    
   </v-content>

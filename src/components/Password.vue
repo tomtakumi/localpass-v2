@@ -8,40 +8,47 @@
       :key="item._id"      
       :prepend-icon="item.model ? iconup : icondown"
       append-icon=""
+      no-action
       >
 
-      <v-list-tile slot="activator" class="px-0">                       
+      <v-list-tile slot="activator">                       
         <v-list-tile-content>
           <v-list-tile-title class="orange--text text--lighten-1">{{ item.system }}</v-list-tile-title>
-          <v-list-tile-sub-title>system</v-list-tile-sub-title>
+          <!--<v-list-tile-sub-title>system</v-list-tile-sub-title>-->
         </v-list-tile-content>
       </v-list-tile>
 
       <v-list-tile :ripple="{ class: 'orange--text' }" avatar @click="copyUser(item.user_name)">
-        <v-list-tile-avatar>
-          <!--<v-icon color="orange lighten-2">lock_outline</v-icon>-->
-        </v-list-tile-avatar>
         <v-list-tile-content>
           <v-list-tile-title class="orange--text text--lighten-2">{{ item.user_name }}</v-list-tile-title>
           <v-list-tile-sub-title>User name</v-list-tile-sub-title>
         </v-list-tile-content>
-        <!--<v-list-tile-action @click.stop>
-          <v-btn icon @click="edit()">
-            <v-icon color="orange lighten-2" small>edit</v-icon>
-          </v-btn>
-        </v-list-tile-action>-->
+        
       </v-list-tile>
 
       <v-list-tile :ripple="{ class: 'orange--text' }" avatar @click="copyPass(item.pass)">
-        <v-list-tile-avatar>
-          <!--<v-icon color="orange lighten-2">lock_open</v-icon>-->
-        </v-list-tile-avatar>
         <v-list-tile-content>
-          <v-list-tile-title class="orange--text text--lighten-2">
+          <!--<v-list-tile-title class="orange--text text--lighten-2">
             {{ passNotVissible( item.pass ) }}
           </v-list-tile-title>
-          <v-list-tile-sub-title>Password</v-list-tile-sub-title>
+          <v-list-tile-sub-title>Password</v-list-tile-sub-title>-->
+          <v-text-field
+            name="input-10-1"
+            hint="At least 8 characters"
+            v-model="pwd"
+            min="8"
+            :append-icon="e1 ? 'visibility' : 'visibility_off'"
+            :append-icon-cb="() => (e1 = !e1)"
+            :type="e1 ? 'password' : 'text'"
+            disabled
+            label="Password"
+          ></v-text-field>
         </v-list-tile-content>
+        <!--<v-list-tile-action @click.stop>
+          <v-btn icon @click="edit()">
+            <v-icon color="orange lighten-2" small>visibility</v-icon>
+          </v-btn>
+        </v-list-tile-action>-->
       </v-list-tile> 
 
     </v-list-group>  
@@ -81,7 +88,12 @@ export default {
       snackbar: false,
       msgUserCopied: "User name copied.",
       msgPassCopied: "Password copied.",
-      snackbarText: ""
+      snackbarText: "",
+      pwd: "Password",
+      e1: true,
+      e2: false,
+      e3: false,
+      e4: false,
     };
   },
   computed: {

@@ -2,7 +2,7 @@
   <v-app dark>
     <v-layout row>
       <v-flex>
-        <v-card tile>          
+        <v-card>          
           <v-toolbar dark dense fixed app>
             <v-toolbar-title class="orange--text">Local Pass</v-toolbar-title>
             <v-spacer></v-spacer>
