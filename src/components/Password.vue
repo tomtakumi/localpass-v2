@@ -7,35 +7,41 @@
       v-model="item.model" 
       :key="item._id"      
       :prepend-icon="item.model ? iconup : icondown"
-      append-icon="" no-action
-      >
+      append-icon="" 
+      no-action>
 
       <v-list-tile slot="activator">                       
         <v-list-tile-content>
           <v-list-tile-title class="orange--text text--lighten-1">{{ item.system }}</v-list-tile-title>
           <v-list-tile-sub-title>system</v-list-tile-sub-title>
         </v-list-tile-content>
+        <v-list-tile-action @click.stop>
+          <v-menu bottom left>
+            <v-btn icon slot="activator">
+              <v-icon color="orange lighten-2">more_vert</v-icon>
+            </v-btn>
+            <v-list dense>
+              <v-list-tile v-for="(item, i) in items" :key="i" @click=item.action>
+                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+              </v-list-tile>
+            </v-list>
+          </v-menu>
+        </v-list-tile-action>
       </v-list-tile>
 
       <v-list-tile :ripple="{ class: 'orange--text' }" avatar @click="copyUser(item.user_name)">
-        <!--<v-list-tile-avatar>
-          <v-icon color="orange lighten-2">lock_outline</v-icon>
-        </v-list-tile-avatar>-->
         <v-list-tile-content>
           <v-list-tile-title class="orange--text text--lighten-2">{{ item.user_name }}</v-list-tile-title>
-          <v-list-tile-sub-title>User name</v-list-tile-sub-title>
+          <v-list-tile-sub-title>user name</v-list-tile-sub-title>
         </v-list-tile-content>
       </v-list-tile>
 
       <v-list-tile :ripple="{ class: 'orange--text' }" avatar @click="copyPass(item.pass)">
-        <!--<v-list-tile-avatar>
-          <v-icon color="orange lighten-2">lock_open</v-icon>
-        </v-list-tile-avatar>-->
         <v-list-tile-content>
           <v-list-tile-title class="orange--text text--lighten-2">
             {{ passNotVissible( item.pass, toggleVisibility ) }}
           </v-list-tile-title>
-          <v-list-tile-sub-title>Password</v-list-tile-sub-title>
+          <v-list-tile-sub-title>password</v-list-tile-sub-title>
         </v-list-tile-content>
         <v-list-tile-action @click.stop>
           <v-btn icon @click="showPassword()">
@@ -83,7 +89,15 @@ export default {
       msgPassCopied: "Password copied.",
       snackbarText: "",
       toggleVisibility: false,
-      visibilityIcon: 'visibility'
+      visibilityIcon: 'visibility',
+      items: [
+        { title: 'Edit', 
+          action: 'edit()' 
+        },
+        { title: 'Delete',
+          action: 'delete()'
+        }
+      ]
     };
   },
   computed: {
@@ -119,6 +133,12 @@ export default {
       }
       
       return pwd
+    },
+    edit() {
+      console.log('Edit clicked')
+    },
+    delete() {
+
     }
   }
 };

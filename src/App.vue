@@ -13,7 +13,7 @@
           <main>
             <router-view></router-view>
           </main>
-          <v-btn fab fixed color="orange" bottom right @click="add">
+          <v-btn fab fixed color="orange" bottom right @click="add" small>
             <v-icon>{{ fabIcon }}</v-icon>
           </v-btn>
         </v-card>
