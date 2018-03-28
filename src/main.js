@@ -37,6 +37,7 @@ Vue.use(Vuetify, {
     VBtn,
     VIcon,
     VGrid,
+    VMenu,
     VSnackbar,
     VSubheader,
     VTextField, 

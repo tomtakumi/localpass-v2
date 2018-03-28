@@ -11,10 +11,10 @@
       no-action
       >
 
-      <v-list-tile slot="activator">                       
+      <v-list-tile slot="activator" class="px-0">                       
         <v-list-tile-content>
           <v-list-tile-title class="orange--text text--lighten-1">{{ item.system }}</v-list-tile-title>
-          <!--<v-list-tile-sub-title>system</v-list-tile-sub-title>-->
+          <v-list-tile-sub-title>system</v-list-tile-sub-title>
         </v-list-tile-content>
       </v-list-tile>
 
@@ -41,7 +41,6 @@
             :append-icon-cb="() => (e1 = !e1)"
             :type="e1 ? 'password' : 'text'"
             disabled
-            label="Password"
           ></v-text-field>
         </v-list-tile-content>
         <!--<v-list-tile-action @click.stop>
