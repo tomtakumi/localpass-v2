@@ -1,7 +1,7 @@
 <template>
   <v-content>
-    <v-card-title>Add new password</v-card-title>
     <v-card-text>
+      <span class="title">Add new password</span>
       <v-text-field label="System" v-model="password.system"></v-text-field>
       <v-text-field label="User ID" v-model="password.user_name"></v-text-field>
       <v-text-field label="Password" v-model="password.pass"></v-text-field>

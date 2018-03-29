@@ -5,7 +5,7 @@ export const storeDef = {
         group: "A",        
         passwords: [
           { _id: 0, model: false, system: "ABC", user_name: "User1", pass: "1091asdfaks" },
-          { _id: 1, model: false, system: "ABD", user_name: "User2", pass: "***********" }
+          { _id: 1, model: false, system: "ABD", user_name: "User2", pass: "notapassword" }
         ]
       },
       {
@@ -63,6 +63,15 @@ export const storeDef = {
           passwords: [password]
         })
 
+      }
+    },
+    removePassword: (state, item) => {
+      let indexOfGroup = state.passwordList.map((e) => e.group).indexOf(item[0])
+      let indexOfId = state.passwordList[indexOfGroup].passwords.findIndex((element) => element._id == item[1])
+      state.passwordList[indexOfGroup].passwords.splice(indexOfId, 1)
+
+      if (state.passwordList[indexOfGroup].passwords.length === 0){
+        state.passwordList.splice(indexOfGroup, 1)
       }
     }
   }

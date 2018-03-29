@@ -2,7 +2,7 @@
   <v-app dark>
     <v-layout row>
       <v-flex>
-        <v-card>          
+        <v-card tile>          
           <v-toolbar dark dense fixed app>
             <v-toolbar-title class="orange--text">Local Pass</v-toolbar-title>
             <v-spacer></v-spacer>
@@ -44,7 +44,6 @@ export default {
         this.fabIcon = "add"
         this.$router.push({ path: '/' })
       }
-
     }
   },
   name: 'App'
