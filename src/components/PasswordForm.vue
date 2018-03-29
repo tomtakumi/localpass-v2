@@ -1,16 +1,18 @@
 <template>
   <v-content>
-    <v-card-text>
-      <span class="title">Add new password</span>
-      <v-text-field label="System" v-model="password.system"></v-text-field>
-      <v-text-field label="User ID" v-model="password.user_name"></v-text-field>
-      <v-text-field label="Password" v-model="password.pass"></v-text-field>
-    </v-card-text>
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn flat @click="cancel">Cancel</v-btn>
-      <v-btn flat @click="save">Save</v-btn>
-    </v-card-actions>
+    <form @keyup.enter="save">
+      <v-card-text>
+        <span class="title">Add new password</span>
+        <v-text-field label="System" v-model="password.system" required></v-text-field>
+        <v-text-field label="User ID" v-model="password.user_name" required></v-text-field>
+        <v-text-field label="Password" v-model="password.pass" required></v-text-field>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn flat @click="cancel">Cancel</v-btn>
+        <v-btn flat @click="save">Save</v-btn>
+      </v-card-actions>
+    </form>
   </v-content>
 </template>
 
@@ -38,6 +40,7 @@ export default {
     save() {
       this.$store.commit('savePassword', this.password)
       this.password = {}
+      this.$router.push({ path: '/' })
     }
   }
 };

@@ -59,14 +59,14 @@ export const storeDef = {
       } else {
 
         state.passwordList.push({
-          group: password.system[0],
+          group: password.system[0].toUpperCase(),
           passwords: [password]
         })
 
       }
     },
     removePassword: (state, item) => {
-      let indexOfGroup = state.passwordList.map((e) => e.group).indexOf(item[0])
+      let indexOfGroup = state.passwordList.map((e) => e.group).indexOf(item[0].toUpperCase())
       let indexOfId = state.passwordList[indexOfGroup].passwords.findIndex((element) => element._id == item[1])
       state.passwordList[indexOfGroup].passwords.splice(indexOfId, 1)
 
