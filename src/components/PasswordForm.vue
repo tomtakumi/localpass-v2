@@ -26,11 +26,16 @@ export default {
   data() {
     return {
       password: {
-        _id: 0, 
+        _id: 0,
         system: "", 
         user_name: "", 
         pass: "" 
       }
+    }
+  },
+  created() {
+    if (this.$route.params.system) {
+      this.password = this.$store.getters.system(this.$route.params.system)
     }
   },
   methods: {

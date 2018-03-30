@@ -21,7 +21,7 @@
               <v-icon color="orange lighten-2">more_vert</v-icon>
             </v-btn>
             <v-list dense>
-              <v-list-tile @click="editPass()">
+              <v-list-tile :to="{ path: `form/${item.system}`}">
                 <v-list-tile-title>Edit</v-list-tile-title>
               </v-list-tile>
               <v-list-tile @click="deletePass(item.system[0], item._id)">
@@ -92,15 +92,7 @@ export default {
       msgPassCopied: "Password copied.",
       snackbarText: "",
       toggleVisibility: false,
-      visibilityIcon: 'visibility',
-      items: [
-        { title: 'Edit', 
-          action: 'edit()' 
-        },
-        { title: 'Delete',
-          action: 'delete()'
-        }
-      ]
+      visibilityIcon: 'visibility'
     };
   },
   computed: {
@@ -127,17 +119,7 @@ export default {
       this.snackbar = true;
     },
     passNotVissible(pass, toggleVisibility) {
-      let pwd 
-      if (toggleVisibility) {
-        pwd = pass        
-      } else {
-        pwd = `•`.repeat(pass.length)
-      }
-      
-      return pwd
-    },
-    editPass() {
-      console.log('Edit clicked')
+      return toggleVisibility ? pass : `•`.repeat(pass.length)
     },
     deletePass(group, id) {
       this.$store.commit('removePassword', [group, id])

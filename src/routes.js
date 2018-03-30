@@ -15,5 +15,11 @@ export const routes = [
     path: '/form',
     name: 'PasswordForm',
     component: PasswordForm
+  },
+  {
+    path: '/form/:system',
+    name: 'SystemForm',
+    component: PasswordForm,
+    props: true
   }
 ]
