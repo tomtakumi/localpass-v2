@@ -10,7 +10,6 @@ export const storeDef = {
       },
       {
         group: "B",
-        model: false,
         passwords: [
           { _id: 0, model: false, system: "BBC", user_name: "User1", pass: "1091asdfaks" },
           { _id: 1, model: false, system: "BBD", user_name: "User2", pass: "1091asdfaks" },
@@ -18,7 +17,6 @@ export const storeDef = {
       },
       {
         group: "C",
-        model: false,
         passwords: [
           { _id: 0, model: false, system: "CBC", user_name: "User1", pass: "1091asdfaks" },
           { _id: 1, model: false, system: "CBD", user_name: "User2", pass: "1091asdfaks" }
@@ -26,7 +24,6 @@ export const storeDef = {
       },
       {
         group: "D",
-        model: false,
         passwords: [
           { _id: 0, model: false, system: "DBC", user_name: "User1", pass: "1091asdfaks" },
           { _id: 1, model: false, system: "DBD", user_name: "User2", pass: "1091asdfaks" }
@@ -47,12 +44,13 @@ export const storeDef = {
   mutations: {
     savePassword: (state, password) => {
 
-      let indexOfGroup = state.passwordList.map((e) => e.group).indexOf(password.system[0])
-      let indexOfSystem = state.passwordList[indexOfGroup].passwords.findIndex((e) => e.system === password.system)
+      let indexOfGroup = state.passwordList.map((e) => e.group).indexOf(password.system[0].toUpperCase())
 
       if (indexOfGroup >= 0) {
 
-        if (indexOfSystem) {
+        let indexOfSystem = state.passwordList[indexOfGroup].passwords.findIndex((e) => e.system === password.system)
+
+        if (indexOfSystem >= 0) {
 
           state.passwordList[indexOfGroup].passwords[indexOfSystem] = password
 

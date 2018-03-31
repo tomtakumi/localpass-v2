@@ -13,7 +13,7 @@
       <v-list-tile slot="activator">                       
         <v-list-tile-content>
           <v-list-tile-title class="orange--text text--lighten-1">{{ item.system }}</v-list-tile-title>
-          <v-list-tile-sub-title>system</v-list-tile-sub-title>
+          <v-list-tile-sub-title>account</v-list-tile-sub-title>
         </v-list-tile-content>
         <v-list-tile-action @click.stop>
           <v-menu bottom left>
@@ -66,20 +66,7 @@
 export default {
   props: {
     password: {
-      type: Object,
-      default() {
-        return {
-          group: "<Group>",          
-          passwords: [
-            {
-              _id: 0,
-              system: "<System>",
-              user_name: "<User name>",
-              pass: "<password>"
-            }
-          ]
-        }
-      }
+      type: Object
     }
   },
   data() {

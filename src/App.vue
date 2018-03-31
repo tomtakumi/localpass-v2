@@ -4,14 +4,16 @@
       <v-flex>
         <v-card tile>          
           <v-toolbar dark dense fixed app>
-            <v-toolbar-title class="orange--text">Local Pass</v-toolbar-title>
+            <v-toolbar-title class="orange--text">LocalPass</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn icon>
               <v-icon>close</v-icon>
             </v-btn>
           </v-toolbar>    
           <main>
-            <router-view></router-view>
+            <transition name="slide" mode="out-in">
+              <router-view></router-view>
+            </transition>
           </main>
           <v-btn fab fixed color="orange" bottom right @click="add" small>
             <v-icon>{{ fabIcon }}</v-icon>
@@ -44,8 +46,27 @@ export default {
         this.fabIcon = "add"
         this.$router.push({ path: '/' })
       }
+
     }
-  },
-  name: 'App'
+  }
 };
 </script>
+
+<style scoped>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 0.2s ease-out;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+  .slide-enter {
+    transform: translate(100%, 0);
+  }
+  .slide-leave-to {
+    transform: translate(-100%, 0);
+  }
+  .slide-leave-active,
+  .slide-enter-active {
+    transition: 0.3s;
+  }
+</style>

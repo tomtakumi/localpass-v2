@@ -2,7 +2,7 @@
   <v-content>
     <form @keyup.enter="save">
       <v-card-text>
-        <span class="title">Add new password</span>
+        <span class="subheading orange--text text--lighten-1">Add new password</span>
         <v-text-field label="System" v-model="password.system" required></v-text-field>
         <v-text-field label="User ID" v-model="password.user_name" required></v-text-field>
         <v-text-field label="Password" v-model="password.pass" required></v-text-field>
